@@ -5,8 +5,120 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:miapr5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="598" Width="820">
+    <Window.Resources>
+        <Style x:Key="TextBlockStyle">
+            <Setter Property="Control.FontFamily" Value="Open Sans"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TextBoxStyle">
+            <Setter Property="TextBox.FontFamily" Value="Open Sans"/>
+            <Setter Property="TextBox.FontSize" Value="17"/>
+            <Setter Property="TextBox.TextAlignment" Value="Center"/>
+            <Setter Property="TextBox.VerticalAlignment" Value=" Center"/>
+            <Setter Property="Control.Margin" Value="3"></Setter>
+            <EventSetter Event="TextBox.PreviewTextInput" Handler="TextCheck"/>
+        </Style>
+        <Style x:Key="ButtonStyle">
+            <Setter Property="Control.FontFamily" Value="Open Sans" />
+            <Setter Property="Control.FontSize" Value="17" />
+            <Setter Property="Control.Background" Value="#FFF1F1F1"/>
+            <Setter Property="Control.Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="97.34" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="3"/>
+        <Grid Grid.ColumnSpan="2" Margin="3,3,3,3" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="31.78"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan ="10" FontSize="20" Style="{StaticResource TextBlockStyle}" Text="training set"/>
+            <Line Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="8" Fill="Blue" Stroke="Blue" VerticalAlignment="Center" StrokeThickness="4" X1="0" X2="1000" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}" Text="Class 1"/>
+            <TextBlock Grid.Column="4" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"><Run Text="X"/></TextBlock>
+            <TextBlock Grid.Column="9" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"><Run Text="Y"/></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}" Text="Object 1"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}" Text="Object 2"/>
+            <TextBox x:Name="TextBoxO1X" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="-1"/>
+            <TextBox x:Name="TextBoxO1Y" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="0"/>
+            <TextBox x:Name="TextBoxO2X" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="1"/>
+            <TextBox x:Name="TextBoxO2Y" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="1"/>
+            <Line Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="8" Fill="Red" Stroke="Red" VerticalAlignment="Center" StrokeThickness="4" X1="0" X2="1000" />
+            <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}" Text="Class 2"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}" Text="Object 1"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}" Text="Object 2"/>
+            <TextBox x:Name="TextBoxO3X" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="2"/>
+            <TextBox x:Name="TextBoxO3Y" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="0"/>
+            <TextBox x:Name="TextBoxO4X" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="1"/>
+            <TextBox x:Name="TextBoxO4Y" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}" Text="-2"/>
+            <Button x:Name="ButtonTrain" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="10" Style="{StaticResource ButtonStyle}" Click="ButtonTrain_OnClick" Content="Train"/>
+        </Grid>
+        <Grid Grid.ColumnSpan="2" Margin="6,3,0,3" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="20" Text="Desicive function"/>
+            <TextBox x:Name="TextBoxFunction" Grid.Row="1" IsReadOnly="True" TextAlignment="Center" FontSize="20" FontFamily="Open Sans" VerticalAlignment="Center"/>
+        </Grid>
+        <Image x:Name="Canvas" MouseMove="Move_MouseMove" Grid.ColumnSpan="4" Margin="3,0,3,6" Grid.RowSpan="6" Grid.Column="2"/>
+        <Grid x:Name="TestDataGrid" Grid.ColumnSpan="2" Margin="0,94,0,36" Grid.RowSpan="3" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Style="{StaticResource TextBlockStyle}" FontSize="20" Margin="3,38,-3,0" Grid.RowSpan="2" VerticalAlignment="Top" Text="Testing set"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}" Grid.ColumnSpan="2" Margin="0,32,133,0" Grid.RowSpan="2" VerticalAlignment="Top"><Run Text="X"/></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}" Margin="0,32,0,0" Grid.RowSpan="2" VerticalAlignment="Top"><Run Text="Y"/></TextBlock>
+            <TextBox x:Name="TextBoxOX" Grid.Column="0" Grid.Row="2" Style="{StaticResource TextBoxStyle}" Text="0"/>
+            <TextBox x:Name="TextBoxOY" Grid.Column="1" Grid.Row="2" Style="{StaticResource TextBoxStyle}" Text="0"/>
+            <Button x:Name="ButtonClassify" IsEnabled="False" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource ButtonStyle}" Click="ButtonClassify_OnClick" Content="Classify"/>
+        </Grid>
+
     </Grid>
 </Window>
