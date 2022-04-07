@@ -21,6 +21,8 @@ namespace PotentialMethod
             Warning = false;
             var nextIteration = true;
             var iterationNumber = 0;
+
+            result += _correction * PartFunction(teachingPoints[teachingPoints.Length - 1][teachingPoints[teachingPoints.Length - 1].Length-1]);
             while (nextIteration && iterationNumber < IterationsCount)
             {
                 iterationNumber++;
@@ -41,27 +43,25 @@ namespace PotentialMethod
             {
                 for (var i = 0; i < teachingPoints[classNumber].Length; i++)
                 {
-                    result += _correction * PartFunction(teachingPoints[classNumber][i]);
-                    var index = (i + 1) % teachingPoints[classNumber].Length;
-                    var nextClassNumber = index == 0 ? (classNumber + 1) % ClassCount : classNumber;
-                    var nextPoint = teachingPoints[nextClassNumber][index];
-                    _correction = GetNewCorrection(nextPoint, result, nextClassNumber);
+                    var curPoint = teachingPoints[classNumber][i];
+                    _correction = GetNewCorrection(curPoint, result, classNumber);
                     if (_correction != 0) nextIteration = true;
+                    result += _correction * PartFunction(teachingPoints[classNumber][i]);
                 }
             }
 
             return nextIteration;
         }
 
-        private static int GetNewCorrection(Point nextPoint, Function result, int nextClassNumber)
+        private static int GetNewCorrection(Point point, Function result, int classNumber)
         {
-            var functionValue = result.GetValue(nextPoint);
-            if (functionValue <= 0 && nextClassNumber == 0)
+            var functionValue = result.GetValue(point);
+            if (functionValue <= 0 && classNumber == 0)
             {
                 return 1;
             }
 
-            if (functionValue > 0 && nextClassNumber == 1)
+            if (functionValue > 0 && classNumber == 1)
             {
                 return -1;
             }
